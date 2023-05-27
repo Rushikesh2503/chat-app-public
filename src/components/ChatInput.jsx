@@ -56,6 +56,7 @@ const Container = styled.div`
   grid-template-columns: 5% 95%;
   background-color: #080420;
   padding: 0 2rem;
+  
   @media screen and (min-width: 720px) and (max-width: 1080px) {
     padding: 0 1rem;
     gap: 1rem;
@@ -91,6 +92,17 @@ const Container = styled.div`
       }
       .epr-preview{
         background: linear-gradient(to right, #000000, #000000);
+      }
+      .epr-body{
+        &::-webkit-scrollbar {
+          width: 0.3rem;
+          &-thumb {
+            background-color: #ffffff;
+            width: 0.2rem;
+            border-radius: 1rem;
+            height:7rem;
+          }
+        }
       }
       
     }
