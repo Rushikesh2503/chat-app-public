@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 
-const Contacts = ({contacts,changeChat }) => {
+const Contacts = ({contacts,changeChat,isMenuOpen,setIsMenuOpen }) => {
     const [currentUserName, setCurrentUserName] = useState(undefined);
     const [currentUserImage, setCurrentUserImage] = useState(undefined);
     const [currentSelected, setCurrentSelected] = useState(undefined);
@@ -19,6 +19,7 @@ const Contacts = ({contacts,changeChat }) => {
     }, []);
 
     const changeCurrentChat = (index, contact) => {
+      setIsMenuOpen(false);
         setCurrentSelected(index);
         changeChat(contact);
     };
@@ -89,12 +90,16 @@ const Container = styled.div`
       text-transform: uppercase;
     }
   }
+
+ 
   .contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    gap: 0.8rem;
+    min-width:18vw;
+    min-height: 82vh;
+    gap: 1rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -143,12 +148,12 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0.4rem 1rem;
     gap: 2rem;
     .avatar {
       img {
-        height: 4rem;
-        max-inline-size: 100%;
-        width: 4rem;
+        height: 55px;
+        width: 55px;
         border-radius:50%;
         border:0.2rem solid black;
       }

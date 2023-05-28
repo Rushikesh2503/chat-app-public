@@ -31,6 +31,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  width:100%;
   flex-direction: column;
   h1 {
     display: flex;

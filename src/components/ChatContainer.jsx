@@ -122,18 +122,17 @@ const ChatContainer = ({currentChat,socket}) => {
 }
 
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 80% 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  width: 100%;
   gap: 0.1rem;
   overflow: hidden;
-  @media screen and (min-width: 720px) and (max-width: 1080px) {
-    grid-template-rows: 15% 70% 15%;
-  }
   .chat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.5rem;
+    padding: 0.2rem 1.5rem;
     .user-details {
       display: flex;
       align-items: center;
@@ -154,6 +153,8 @@ const Container = styled.div`
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
+    justify-content:start;
+    height:100%;
     gap: 1rem;
     overflow: auto;
     &::-webkit-scrollbar {

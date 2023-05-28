@@ -7,6 +7,9 @@ import Contacts from "../components/Contacts";
 import { allUsersRoute, host } from "../utils/APIRoutes";
 import Welcome from "../components/Welcome";
 import ChatContainer from "../components/ChatContainer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -14,7 +17,11 @@ const Chat = () => {
   const [contacts, setContacts] = useState([]);
   const [currentChat, setCurrentChat] = useState(undefined);
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [loading,setLoading]=useState(true);
+  const [loading, setLoading] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   useEffect(() => {
     const getlocalStore = async () => {
@@ -24,7 +31,7 @@ const Chat = () => {
         setCurrentUser(
           await JSON.parse(
             localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
-          ) 
+          )
         );
       }
     };
@@ -33,9 +40,11 @@ const Chat = () => {
   }, [navigate]);
 
   useEffect(() => {
+    console.log(currentUser)
     if (currentUser) {
       socket.current = io(host);
       socket.current.emit("add-user", currentUser._id);
+      
     }
   }, [currentUser]);
 
@@ -46,16 +55,15 @@ const Chat = () => {
         if (currentUser.isAvatarImageSet) {
           const data = await axios.get(`${allUsersRoute}/${currentUser._id}`);
           setContacts(data.data);
-          setTimeout(()=>{
+          setTimeout(() => {
             setLoading(false);
-          },500)
+          }, 500);
         } else {
           navigate("/setAvatar");
         }
-      }else{
+      } else {
         setLoading(false);
       }
-      
     };
     getAllUsers();
   }, [currentUser, navigate]);
@@ -66,41 +74,49 @@ const Chat = () => {
   return (
     <>
       <>
-      {
-      loading?<Container>
-          <img
-            src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
-            alt="loader"
-            className="loader"
-          /></Container>:<>
-      {contacts && contacts.length > 0 ? (
-        <Container>
-          <div className="container">
-            <Contacts contacts={contacts} changeChat={handleChatChange} />
-            {currentChat === undefined ? (
-            <Welcome/>
-          ) : (
-            <ChatContainer currentChat={currentChat} socket={socket}/>
-          )}
-          </div>
-        </Container>
-      ) : (
-        <Container>
-          <img
-            src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
-            alt="loader"
-            className="loader"
-          /></Container>
-      )}
-      
+        {loading ? (
+          <Container>
+            <img
+              src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
+              alt="loader"
+              className="loader"
+            />
+          </Container>
+        ) : (
+          <>
+            {contacts && contacts.length > 0 ? (
+              <Container>
+                <HamburgerMenu onClick={toggleMenu}>
+                  {
+                    isMenuOpen?
+                    <FontAwesomeIcon icon={faTimes} />:
+                    <FontAwesomeIcon icon={faBars} />
+                  }
+                  
+                </HamburgerMenu>
+                <div className="container">
+                  <ContactWrapper isMenuOpen={isMenuOpen}>
+                      <Contacts contacts={contacts} changeChat={handleChatChange} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+                  </ContactWrapper>
+                  {currentChat === undefined ? (
+                    <Welcome />
+                  ) : (
+                    <ChatContainer currentChat={currentChat} socket={socket} />
+                  )}
+                </div>
+              </Container>
+            ) : (
+              <Container>
+                <img
+                  src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
+                  alt="loader"
+                  className="loader"
+                />
+              </Container>
+            )}
+          </>
+        )}
       </>
-      }
-      
-      </>
-    
-      
-
-      
     </>
   );
 };
@@ -116,18 +132,38 @@ const Container = styled.div`
   background-color: #131324;
   .container {
     height: 85vh;
-    width: 85vw;
+    width: 90vw;
     background-color: #000000;
-    display: grid;
-    grid-template-columns: 25% 75%;
-    @media screen and (min-width: 720px) and (max-width: 1080px) {
-      grid-template-columns: 35% 65%;
-    }
-    @media screen and (min-width: 220px) and (max-width: 720px) {
-      grid-template-columns: 45% 55%;
-      width: 100vw;
-    }
+    display: flex;
   }
 `;
+const HamburgerMenu = styled.div`
+  display: none;
+  position: absolute;
+  top: 1.8rem;
+  right:1.5rem;
+  color:white;
+  background:transparent;
+  cursor:pointer;
+  img{
+    width:25px;
+    height:25px;
+  }
+  @media (max-width: 1068px) {
+    display: block;
+  }
+`;
+const ContactWrapper =  styled.div`
+  display: flex;
+
+@media (max-width: 1068px) {
+  display: ${({ isMenuOpen }) => (isMenuOpen ? 'block' : 'none')};
+  position: fixed;
+  width:80vw;
+  top: 0;
+  left: 0;
+}
+`;
+
 
 export default Chat;
