@@ -1,7 +1,6 @@
 # <img align="center" style="width:100px;height100px;border-radius:50%" src="https://res.cloudinary.com/rsbrsb/image/upload/v1685167424/brew_apps/chatbee2_pojnjf.png"> CHATBEE - MERN Chat App
 
 </br>
-</br>
 This is a chat application built using the MERN stack (MongoDB, Express, React, Node.js).
 
 **This project has been done in  order to learn the basic working of a website by implementing Frontend as well as Backend. Working on this project helps me to learn a lot of new things that goes into building a website. (Solo Project)**
