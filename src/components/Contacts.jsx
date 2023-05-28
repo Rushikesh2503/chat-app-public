@@ -77,6 +77,7 @@ const Container = styled.div`
   grid-template-rows: 10% 75% 15%;
   overflow: hidden;
   background-color: #080420;
+  max-height: 100vh;
   .brand {
     display: flex;
     align-items: center;
@@ -90,15 +91,13 @@ const Container = styled.div`
       text-transform: uppercase;
     }
   }
-
- 
   .contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
     min-width:18vw;
-    min-height: 82vh;
+    flex: 0 0 70%;
     gap: 1rem;
     &::-webkit-scrollbar {
       width: 0.2rem;
