@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# <img align="center" style="width:100px;height100px;border-radius:50%" src="https://res.cloudinary.com/rsbrsb/image/upload/v1685167424/brew_apps/chatbee2_pojnjf.png"> CHATBEE - MERN Chat App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</br>
+CHATBEE is a versatile chat application that allows users to seamlessly connect and communicate with friends across various devices, including mobile phones and laptops. With its intuitive interface and responsive design, CHATBEE offers a user-friendly experience that adapts to any screen size.This is a chat application built using the MERN stack (MongoDB, Express, React, Node.js).
 
-## Available Scripts
 
-In the project directory, you can run:
+**This project has been done in  order to learn the basic working of a website by implementing Frontend as well as Backend. Working on this project helps me to learn a lot of new things that goes into building a website. (Solo Project)**
 
-### `npm start`
+## Demo Link
+<a href="https://chat-app-public.vercel.app/">CHATBEE</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Chat-app-public 💬
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The frontend of the application is built using React. It utilizes various libraries and dependencies. To set up the frontend:
+### Technologies Used
 
-### `npm test`
+<div align="center">
+  <img src="https://img.shields.io/badge/JS-Javascript-yellow"/>
+  <img src="https://img.shields.io/badge/MD-Mongodb-brightgreen"/>
+  <img src="https://img.shields.io/badge/ex-Express-blueviolet"/>
+  <img src="https://img.shields.io/badge/R-React-blue"/>
+  <img src="https://img.shields.io/badge/NJ-Node-green"/>
+  <img src="https://img.shields.io/badge/STC-StyledComponent-pink"/>
+  <img src="https://img.shields.io/badge/SIO-SocketIoClient-blue"/>
+  <img src="https://img.shields.io/badge/FA-FontAwesomeIcon-blueviolet"/>
+  <img src="https://img.shields.io/badge/AXIOS-axios-yellow"/> 
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Installing and Running
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Executing the commands mentioned below one by one in your command line will help in making this React app.
+**Cloning**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+https://github.com/Rushikesh2503/chat-app-public.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+cd chat-app-public
 
-### `npm run eject`
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npm start
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Features
+- Login 
+- SignUp
+- Create User
+- Create Avtar
+- Chat with Friends
+- Easy navigation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Key Features of CHATBEE:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Cross-device Compatibility: Chat with friends effortlessly, whether you're using your mobile phone or laptop.
+- Responsive Design: Enjoy a seamless experience with CHATBEE's responsive interface that adjusts to any screen size.
+- Real-time Messaging: Engage in instant conversations, allowing you to stay connected and share thoughts effortlessly.
+- Intuitive Interface: Navigate through CHATBEE's user-friendly interface with ease, making communication a breeze.
+- Secure and Reliable: Rest assured that your conversations are encrypted and your privacy is protected on CHATBEE's secure platform.
+- Experience the joy of connecting with friends anytime, anywhere with CHATBEE. Start chatting today and elevate your communication to new heights.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
