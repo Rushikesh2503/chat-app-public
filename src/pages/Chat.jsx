@@ -129,9 +129,10 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
+  overflow-y:auto;
   background-color: #131324;
   .container {
-    height: 85vh;
+    height: 90vh;
     width: 90vw;
     background-color: #000000;
     display: flex;
@@ -142,8 +143,8 @@ const Container = styled.div`
 const HamburgerMenu = styled.div`
   display: none;
   position: absolute;
-  top: 1.8rem;
-  right:1.5rem;
+  top: 2vw;
+  right:5vw;
   color:white;
   background:transparent;
   cursor:pointer;
