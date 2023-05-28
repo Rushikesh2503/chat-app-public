@@ -137,6 +137,8 @@ const Container = styled.div`
     display: flex;
   }
 `;
+
+//hamburger code as small screen size
 const HamburgerMenu = styled.div`
   display: none;
   position: absolute;
