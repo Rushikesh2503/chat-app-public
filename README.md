@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# <img align="center" style="width:100px;height100px;border-radius:50%" src="https://res.cloudinary.com/rsbrsb/image/upload/v1685167424/brew_apps/chatbee2_pojnjf.png"> CHATBEE - MERN Chat App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</br>
+This is a chat application built using the MERN stack (MongoDB, Express, React, Node.js).
 
-## Available Scripts
+**This project has been done in  order to learn the basic working of a website by implementing Frontend as well as Backend. Working on this project helps me to learn a lot of new things that goes into building a website. (Solo Project)**
 
-In the project directory, you can run:
 
-### `npm start`
+## Chat-app-public 💬
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The frontend of the application is built using React. It utilizes various libraries and dependencies. To set up the frontend:
+### Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<div align="center">
+  <img src="https://img.shields.io/badge/JS-Javascript-yellow"/>
+  <img src="https://img.shields.io/badge/MD-Mongodb-brightgreen"/>
+  <img src="https://img.shields.io/badge/ex-Express-blueviolet"/>
+  <img src="https://img.shields.io/badge/R-React-blue"/>
+  <img src="https://img.shields.io/badge/NJ-Node-green"/>
+  <img src="https://img.shields.io/badge/STC-StyledComponent-pink"/>
+  <img src="https://img.shields.io/badge/SIO-SocketIoClient-blue"/>
+  <img src="https://img.shields.io/badge/FA-FontAwesomeIcon-blueviolet"/>
+  <img src="https://img.shields.io/badge/AXIOS-axios-yellow"/> 
+</div>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installing and Running
 
-### `npm run build`
+Executing the commands mentioned below one by one in your command line will help in making this React app.
+**Cloning**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+https://github.com/Rushikesh2503/chat-app-public.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+cd chat-app-public
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install
 
-### `npm run eject`
+npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Responsive Design
+- Chat with Friends
+- Easy navigation
+- Login 
+- SignUp
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
