@@ -132,7 +132,7 @@ const Container = styled.div`
   overflow-y:auto;
   background-color: #131324;
   .container {
-    height: 90vh;
+    height: 80vh;
     width: 90vw;
     background-color: #000000;
     display: flex;
