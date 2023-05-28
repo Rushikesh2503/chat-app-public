@@ -43,13 +43,12 @@ npm start
 ```
 
 ## Features
-
-- Responsive Design
-- Chat with Friends
-- Easy navigation
 - Login 
 - SignUp
-
+- Create User
+- Create Avtar
+- Chat with Friends
+- Easy navigation
 
 
 
