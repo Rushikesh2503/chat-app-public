@@ -18,6 +18,7 @@ to {
 
 
 const Login = () => {
+    const [loading, setLoading] = useState(false);
     const navigate=useNavigate();
     
     const [values,setValues]=useState({
@@ -83,6 +84,16 @@ const Login = () => {
     }
   return (
     <>
+     {loading ? (
+          <Container>
+            <img
+              src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
+              alt="loader"
+              className="loader"
+            />
+          </Container>
+        ) : (
+    <>
     <FormContainer>
         <form onSubmit={(event)=>handleSubmit(event)} autoComplete="off">
             <div className="brand">
@@ -98,6 +109,8 @@ const Login = () => {
 
     </FormContainer>
      <ToastContainer/>
+    </>
+        )}
     </>
   )
 }
@@ -175,6 +188,32 @@ form{
 
     }
 }
+`;
+
+const Container = styled.div`
+height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+overflow-y:auto;
+background-color: #131324;
+.container{
+  height: 80vh;
+  width: 90vw;
+  background-color: #000000;
+  display: flex;
+}
+.loader {
+  height: 50vh;
+  width: 25vw;
+  background-color: #000000;
+  border:none
+}
+
+
 `;
 
 export default Login
