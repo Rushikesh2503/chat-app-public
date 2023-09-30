@@ -34,6 +34,7 @@ const Login = () => {
     }, []);
     const handleSubmit=async(event)=>{
         event.preventDefault();
+        setLoading(true)
         if(handleValidation()){
             const {password,email}=values;
             
