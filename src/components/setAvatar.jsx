@@ -135,9 +135,11 @@ const Container = styled.div`
   background-color: #131324;
   height: 100vh;
   width: 100vw;
-
   .loader {
-    max-inline-size: 100%;
+    height: 50vh;
+    width: 25vw;
+    background-color: #000000;
+    border:none
   }
 
   .title-container {

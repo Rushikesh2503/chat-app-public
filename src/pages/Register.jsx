@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { registerRoute } from "../utils/APIRoutes";
 
-
 // flip animation for the form container
 const rotateAnimation = keyframes`
 from {
@@ -18,13 +17,14 @@ to {
 `;
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
       navigate("/");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // initial form field values in state
@@ -38,13 +38,13 @@ const Register = () => {
   // Handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true)
 
     // Validate form input before submitting
     if (handleValidation()) {
       const { password, email, username } = values;
 
       try {
-
         // Send registration request to the server
         const { data } = await axios.post(registerRoute, {
           username,
@@ -53,18 +53,20 @@ const Register = () => {
         });
 
         if (data.status === false) {
-            // an error toast if registration fails
+          // an error toast if registration fails
           toast.error(data.message, toastOptions);
         }
         if (data.status === true) {
-            // Store the user data in local storage and navigate to the homepage
-             localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY, JSON.stringify(data.user));
-             navigate("/");
+          // Store the user data in local storage and navigate to the homepage
+          localStorage.setItem(
+            process.env.REACT_APP_LOCALHOST_KEY,
+            JSON.stringify(data.user)
+          );
+          navigate("/");
         }
-
       } catch (error) {
         const { response } = error;
-         // An error toast with the server's response
+        // An error toast with the server's response
         toast.error(response.data.message, toastOptions);
       }
     }
@@ -85,8 +87,7 @@ const Register = () => {
     theme: "dark",
   };
 
-
-   // Form validation logic
+  // Form validation logic
   const handleValidation = () => {
     const { password, confirmPassword, email, username } = values;
     if (password !== confirmPassword) {
@@ -112,54 +113,65 @@ const Register = () => {
   };
   return (
     <>
-      <FormContainer>
-        <form onSubmit={(event) => handleSubmit(event)} autoComplete="off">
-          <div className="brand">
-            <img
-              src="https://res.cloudinary.com/rsbrsb/image/upload/v1685167424/brew_apps/chatbee2_pojnjf.png"
-              alt=""
-            />
-            <h1>CHATBEE</h1>
-          </div>
-          <input
-            autoComplete="off"
-            type="text"
-            name="username"
-            placeholder="User Name"
-            onChange={(e) => handleChange(e)}
+      {loading ? (
+        <Container>
+          <img
+            src="https://res.cloudinary.com/rsbrsb/image/upload/v1685164557/brew_apps/loader_sx00aa.gif"
+            alt="loader"
+            className="loader"
           />
-          <input
-            autoComplete="off"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            autoComplete="off"
-            type="password"
-            name="password"
-            placeholder="Password "
-            onChange={(e) => handleChange(e)}
-          />
-          <input
-            autoComplete="off"
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password "
-            onChange={(e) => handleChange(e)}
-          />
-          <button type="submit">Create User</button>
-          <div className="account_already">
-            Already have an account ? <Link to="/login"> Login</Link>
-          </div>
-        </form>
-      </FormContainer>
-      <ToastContainer />
+        </Container>
+      ) : (
+        <>
+          <FormContainer>
+            <form onSubmit={(event) => handleSubmit(event)} autoComplete="off">
+              <div className="brand">
+                <img
+                  src="https://res.cloudinary.com/rsbrsb/image/upload/v1685167424/brew_apps/chatbee2_pojnjf.png"
+                  alt=""
+                />
+                <h1>CHATBEE</h1>
+              </div>
+              <input
+                autoComplete="off"
+                type="text"
+                name="username"
+                placeholder="User Name"
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                autoComplete="off"
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                autoComplete="off"
+                type="password"
+                name="password"
+                placeholder="Password "
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                autoComplete="off"
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password "
+                onChange={(e) => handleChange(e)}
+              />
+              <button type="submit">Create User</button>
+              <div className="account_already">
+                Already have an account ? <Link to="/login"> Login</Link>
+              </div>
+            </form>
+          </FormContainer>
+          <ToastContainer />
+        </>
+      )}
     </>
   );
 };
-
 
 // CSS styles for the form container;
 
@@ -235,6 +247,32 @@ const FormContainer = styled.div`
       }
     }
   }
+`;
+
+const Container = styled.div`
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  overflow-y:auto;
+  background-color: #131324;
+  .container{
+    height: 80vh;
+    width: 90vw;
+    background-color: #000000;
+    display: flex;
+  }
+  .loader {
+    height: 50vh;
+    width: 25vw;
+    background-color: #000000;
+    border:none
+  }
+  
+
 `;
 
 export default Register;

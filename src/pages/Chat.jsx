@@ -137,6 +137,12 @@ const Container = styled.div`
     background-color: #000000;
     display: flex;
   }
+  .loader {
+    height: 50vh;
+    width: 25vw;
+    background-color: #000000;
+    border:none
+  }
 `;
 
 //hamburger code as small screen size
