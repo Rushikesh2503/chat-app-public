@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { Buffer } from "buffer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { setAvatarRoute } from "../utils/APIRoutes";
-
+import multiavatar from '@multiavatar/multiavatar/esm';
 
 function SetAvatar() {
-  const api = `https://api.multiavatar.com/4645646`;
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -63,22 +61,36 @@ function SetAvatar() {
   };
 
   useEffect(() => {
-    const fetchAvtarData = async () => {
+    const generateAvatars = () => {
       const data = [];
       for (let i = 0; i < 4; i++) {
-        const image = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}?apikey=${
-            process.env.REACT_APP_API_KEY_AVATAR
-          }`
-        );
-        const buffer = new Buffer(image.data);
-        data.push(buffer.toString("base64"));
+        // Generate random names for unique avatars
+        const randomNames = [
+          'Alice Johnson', 'Bob Smith', 'Carol Davis', 'David Wilson',
+          'Eva Brown', 'Frank Miller', 'Grace Lee', 'Henry Taylor',
+          'Iris Garcia', 'Jack Martinez', 'Kate Anderson', 'Liam Thompson'
+        ];
+        const randomName = randomNames[Math.floor(Math.random() * randomNames.length)];
+        const svgCode = multiavatar(randomName);
+        
+        // Convert SVG to base64
+        const svgBlob = new Blob([svgCode], { type: 'image/svg+xml' });
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64 = reader.result.split(',')[1];
+          data.push(base64);
+          
+          // If we have all 4 avatars, update state
+          if (data.length === 4) {
+            setAvatars(data);
+            setIsLoading(false);
+          }
+        };
+        reader.readAsDataURL(svgBlob);
       }
-      setAvatars(data);
-      setIsLoading(false);
     };
 
-    fetchAvtarData();
+    generateAvatars();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); 
 
