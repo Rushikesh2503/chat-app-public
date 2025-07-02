@@ -59,10 +59,12 @@ const ChatContainer = ({currentChat,socket}) => {
   useEffect(() => {
     if (socket.current) {
       socket.current.on("msg-recieve", (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg });
+        if (msg.from === currentChat._id) {
+          setArrivalMessage({ fromSelf: false, message: msg.message });
+        }
       });
     }
-  }, [socket]);
+  }, [socket, currentChat]);
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
@@ -87,7 +89,7 @@ const ChatContainer = ({currentChat,socket}) => {
             <h3>{currentChat.username}</h3>
           </div>
         </div>
-        <Logout />
+        <Logout className="logout-desktop" />
       </div>
       
       <div className="chat-messages">
@@ -124,39 +126,65 @@ const ChatContainer = ({currentChat,socket}) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   width: 100%;
+  height: 100vh;
   gap: 0.1rem;
   overflow: hidden;
+  
   .chat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.2rem 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #080420;
+    min-height: 60px;
+    
     .user-details {
       display: flex;
       align-items: center;
       gap: 1rem;
+      
       .avatar {
         img {
           height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          
+          @media (max-width: 768px) {
+            height: 2.5rem;
+            width: 2.5rem;
+          }
         }
       }
+      
       .username {
         h3 {
           color: white;
+          font-size: 1.2rem;
+          
+          @media (max-width: 768px) {
+            font-size: 1rem;
+          }
         }
       }
     }
   }
+  
   .chat-messages {
-    padding: 1rem 2rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    justify-content:start;
-    height:100%;
+    justify-content: flex-start;
+    flex: 1;
     gap: 1rem;
     overflow: auto;
+    background-color: #0d0d30;
+    
+    @media (max-width: 768px) {
+      padding: 0.5rem;
+    }
+    
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -165,32 +193,49 @@ const Container = styled.div`
         border-radius: 1rem;
       }
     }
+    
     .message {
       display: flex;
       align-items: center;
+      
       .content {
-        max-width: 40%;
+        max-width: 60%;
         overflow-wrap: break-word;
-        padding: 1rem;
-        font-size: 1.1rem;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
         border-radius: 1rem;
         color: #d1d1d1;
+        
+        @media (max-width: 768px) {
+          max-width: 80%;
+          padding: 0.6rem 0.8rem;
+          font-size: 0.9rem;
+        }
+        
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
         }
       }
     }
+    
     .sended {
       justify-content: flex-end;
       .content {
         background-color: #4f04ff21;
       }
     }
+    
     .recieved {
       justify-content: flex-start;
       .content {
         background-color: #9900ff20;
       }
+    }
+  }
+
+  .logout-desktop {
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 `;
@@ -202,18 +247,35 @@ const EmptyChat = styled.div`
   justify-content: center;
   padding: 2rem;
   color: #ccc;
-  p{
-    display:flex;
-    color:#ccc;
+  height: 100%;
+  
+  p {
+    display: flex;
+    color: #ccc;
     padding: 1.5rem 0;
+    text-align: center;
+    
+    @media (max-width: 768px) {
+      padding: 1rem 0;
+      font-size: 0.9rem;
+    }
   }
-  img{
-    width:7rem;
+  
+  img {
+    width: 7rem;
+    
+    @media (max-width: 768px) {
+      width: 5rem;
+    }
   }
 
   .no-messages {
     margin-top: 1rem;
     font-size: 1.5rem;
+    
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
 `;
 

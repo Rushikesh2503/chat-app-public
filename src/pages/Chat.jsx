@@ -129,19 +129,32 @@ const Container = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  overflow-y:auto;
+  overflow: hidden;
   background-color: #131324;
+  
   .container {
-    height: 80vh;
-    width: 90vw;
+    height: 100vh;
+    width: 100vw;
     background-color: #000000;
     display: flex;
+    position: relative;
+    
+    @media (max-width: 768px) {
+      height: 100vh;
+      width: 100vw;
+    }
   }
+  
   .loader {
     height: 50vh;
     width: 25vw;
     background-color: #000000;
-    border:none
+    border: none;
+    
+    @media (max-width: 768px) {
+      height: 40vh;
+      width: 60vw;
+    }
   }
 `;
 
@@ -149,30 +162,34 @@ const Container = styled.div`
 const HamburgerMenu = styled.div`
   display: none;
   position: absolute;
-  top: 2vw;
-  right:5vw;
-  color:white;
-  background:transparent;
-  cursor:pointer;
-  img{
-    width:25px;
-    height:25px;
-  }
-  @media (max-width: 1068px) {
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 1.5rem;
+  
+  @media (max-width: 768px) {
     display: block;
   }
 `;
-const ContactWrapper =  styled.div`
+
+const ContactWrapper = styled.div`
   display: flex;
-
-@media (max-width: 1068px) {
-  display: ${({ isMenuOpen }) => (isMenuOpen ? 'block' : 'none')};
-  position: fixed;
-  width:80vw;
-  top: 0;
-  left: 0;
-}
+  height: 100%;
+  width: 30%;
+  
+  @media (max-width: 768px) {
+    display: ${({ isMenuOpen }) => (isMenuOpen ? 'block' : 'none')};
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: #080420;
+  }
 `;
-
 
 export default Chat;
